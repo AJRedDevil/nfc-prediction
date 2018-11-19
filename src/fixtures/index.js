@@ -5,10 +5,9 @@ import config from '../../config';
 import {fixturesHandler} from './handler';
 
 const router = express.Router();
-const log = str => console.log(JSON.stringify(str));
 
+// middleware that is specific to fixtures Router
 router.use(function(req, res, next) {
-  log(`Time: ${Date.now()} App: fixtures URL: ${req.originalUrl}`);
   next();
 });
 
