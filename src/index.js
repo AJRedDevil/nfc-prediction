@@ -2,6 +2,7 @@ import express from 'express';
 
 import fplStatic from './fplStatic';
 import fixtures from './fixtures';
+import prediction from './prediction';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.use('/fplstatic', fplStatic);
 app.use('/fixtures', fixtures);
+app.use('/prediction', prediction);
 
 // eslint-disable-next-line no-unused-vars
 app.use(function(err, req, res, next) {

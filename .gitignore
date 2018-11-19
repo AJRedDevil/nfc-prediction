@@ -80,3 +80,8 @@ typings/
 
 # Final version
 dist
+
+# folders
+data
+uploads
+
