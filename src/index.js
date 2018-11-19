@@ -1,10 +1,13 @@
 import express from 'express';
 
-const app = express();
+import fplStatic from './fplStatic';
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
+
+app.use('/fplstatic', fplStatic);
 
 // eslint-disable-next-line no-unused-vars
 app.use(function(err, req, res, next) {
