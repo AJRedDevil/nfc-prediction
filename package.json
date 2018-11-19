@@ -1,0 +1,10 @@
+{
+  "name": "nfc-prediction",
+  "version": "0.1.0",
+  "description": "NFC Prediction Data Log",
+  "main": "index.js",
+  "repository": "git@gitlab.com:AJRedDevil/nfc-prediction.git",
+  "author": "Ajan Lal Shrestha <ajan.shresh@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
