@@ -6,5 +6,22 @@
   "repository": "git@gitlab.com:AJRedDevil/nfc-prediction.git",
   "author": "Ajan Lal Shrestha <ajan.shresh@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "npx babel src --out-dir dist",
+    "prestart": "yarn build",
+    "start": "node dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.15.2"
+  }
 }
