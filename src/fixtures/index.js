@@ -2,32 +2,31 @@ import express from 'express';
 import axios from 'axios';
 
 import config from '../../config';
-import {teamHandler} from './handler';
+import {fixturesHandler} from './handler';
 
 const router = express.Router();
 const log = str => console.log(JSON.stringify(str));
 
-// middleware that is specific to fplStatic Router
 router.use(function(req, res, next) {
-  log(`Time: ${Date.now()} App: fplStatic URL: ${req.originalUrl}`);
+  log(`Time: ${Date.now()} App: fixtures URL: ${req.originalUrl}`);
   next();
 });
 
 router.get('/', (req, res) =>
   res.json({
     success: true,
-    message: 'fplStatic',
+    message: 'fixtures',
   })
 );
 
-router.post('/teams', (req, res) =>
-  axios(config.static)
+router.post('/:gameweek', (req, res) =>
+  axios(`${config.event}${req.params.gameweek}`)
     .then(response => response.data)
-    .then(teamHandler)
-    .then(teams =>
+    .then(fixturesHandler)
+    .then(fixtures =>
       res.json({
         success: true,
-        data: teams,
+        data: fixtures,
       })
     )
     .catch(e => {
