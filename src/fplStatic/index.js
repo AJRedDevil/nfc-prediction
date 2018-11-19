@@ -5,11 +5,9 @@ import config from '../../config';
 import {teamHandler} from './handler';
 
 const router = express.Router();
-const log = str => console.log(JSON.stringify(str));
 
 // middleware that is specific to fplStatic Router
 router.use(function(req, res, next) {
-  log(`Time: ${Date.now()} App: fplStatic URL: ${req.originalUrl}`);
   next();
 });
 
