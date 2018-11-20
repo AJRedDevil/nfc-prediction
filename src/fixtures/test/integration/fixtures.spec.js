@@ -20,8 +20,8 @@ describe('Fixtures', () => {
         const {success, message} = res.body;
         expect(success).to.be.true;
         expect(message).to.equal('fixtures');
-      });
-    done();
+      })
+      .then(done);
   });
 
   it('should return the 10 fixtures info', done => {
@@ -34,8 +34,14 @@ describe('Fixtures', () => {
         expect(success).to.be.true;
         expect(data.length).to.equal(10);
         expect(data[0].gameweek).to.equal(1);
-      });
-    done();
+        expect(data[0]).to.contains.all.keys(
+          'kickoffTime',
+          'gameweek',
+          'teams',
+          'score'
+        );
+      })
+      .then(done);
   });
 
   it('should return error message', done => {
@@ -47,7 +53,7 @@ describe('Fixtures', () => {
         const {success, message} = res.body;
         expect(success).to.be.false;
         expect(message).to.equal('Fixture does not exist');
-      });
-    done();
+      })
+      .then(done);
   });
 });

@@ -11,7 +11,8 @@
     "build": "npx babel src --out-dir dist",
     "prestart": "yarn build",
     "start": "node dist",
-    "test": "mocha --require @babel/register ./src/**/*.spec.js*"
+    "test": "mocha --require @babel/register ./src/**/unit/*.spec.js*",
+    "test:integration": "mocha --require @babel/register ./src/**/integration/*.spec.js*"
   },
   "devDependencies": {
     "@babel/cli": "7.1.5",
