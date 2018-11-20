@@ -1,5 +1,6 @@
-const fixturesHandler = fixtures =>
-  fixtures.map(fixture => {
+const fixturesHandler = fixtures => {
+  if (fixtures.length === 0) throw new Error('Fixture does not exist');
+  return fixtures.map(fixture => {
     const {
       kickoff_time: kickoffTime,
       event: gameweek,
@@ -21,6 +22,7 @@ const fixturesHandler = fixtures =>
       },
     };
   });
+};
 
 module.exports = {
   fixturesHandler,
