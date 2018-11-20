@@ -84,4 +84,5 @@ dist
 # folders
 data
 uploads
+tests/api
 

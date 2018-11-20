@@ -1,6 +1,6 @@
 import express from 'express';
 
-import {uploadHandler} from './handler';
+import {uploadHandler, fileHandler} from './handler';
 
 const router = express.Router();
 
@@ -26,6 +26,21 @@ router.post('/upload', uploadHandler.single('prediction'), (req, res) => {
     return res.json({
       success: true,
       message: 'Successfully uploaded file',
+    });
+  }
+});
+
+router.get('/:gameweek', (req, res) => {
+  try {
+    const data = fileHandler(req.params.gameweek);
+    return res.json({
+      success: true,
+      data,
+    });
+  } catch (e) {
+    return res.json({
+      success: false,
+      message: e.message,
     });
   }
 });
