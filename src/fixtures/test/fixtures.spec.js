@@ -2,6 +2,7 @@ import supertest from 'supertest';
 const expect = require('chai').expect;
 
 const api = supertest('http://localhost:3000');
+
 describe('Fixtures', () => {
   it('should return a 200 response', done => {
     api
