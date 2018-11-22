@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import config from '../../config';
 import {fixturesHandler} from './handler';
+import {read} from '../utils';
 
 const router = express.Router();
 
@@ -18,23 +19,29 @@ router.get('/', (req, res) =>
   })
 );
 
-router.post('/:gameweek', (req, res) =>
-  axios(`${config.event}${req.params.gameweek}`)
-    .then(response => response.data)
-    .then(fixturesHandler)
-    .then(fixtures =>
-      res.json({
-        success: true,
-        data: fixtures,
-      })
-    )
-    .catch(e => {
-      console.error(e.message);
-      res.json({
-        success: false,
-        message: e.message,
+router.get('/:gameweek', (req, res) => {
+  const gameweek = req.params.gameweek;
+  const response = read(`fixture${gameweek}`);
+  if (response.success) {
+    return res.json(response);
+  } else {
+    axios(`${config.event}${gameweek}`)
+      .then(response => response.data)
+      .then(fixturesHandler)
+      .then(fixtures =>
+        res.json({
+          success: true,
+          data: fixtures,
+        })
+      )
+      .catch(e => {
+        console.error(e.message);
+        res.json({
+          success: false,
+          message: e.message,
+        });
       });
-    })
-);
+  }
+});
 
 module.exports = router;

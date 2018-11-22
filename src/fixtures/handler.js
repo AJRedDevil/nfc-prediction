@@ -1,6 +1,8 @@
+import {write} from '../utils';
+
 const fixturesHandler = fixtures => {
   if (fixtures.length === 0) throw new Error('Fixture does not exist');
-  return fixtures.map(fixture => {
+  const data = fixtures.map(fixture => {
     const {
       kickoff_time: kickoffTime,
       event: gameweek,
@@ -22,6 +24,8 @@ const fixturesHandler = fixtures => {
       },
     };
   });
+  write(`fixture${data[0].gameweek}`, data, err => console.error(err.stack));
+  return data;
 };
 
 module.exports = {
