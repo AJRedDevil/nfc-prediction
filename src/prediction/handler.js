@@ -26,7 +26,7 @@ const getGameWeekPrediction = gameweek => {
   const sheetName = `GW${gameweek}`;
   const response = read(sheetName);
   if (response.success) {
-    return response;
+    return response.data;
   } else if (gameweekExist(sheetName)) {
     const data = getJsonData(sheetName);
     write(sheetName, data, err => console.error(err.stack));
