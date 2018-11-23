@@ -24,7 +24,9 @@ const fixturesHandler = fixtures => {
       },
     };
   });
-  write(`fixture${data[0].gameweek}`, data, err => console.error(err.stack));
+  write(`fixtures/fixture${data[0].gameweek}`, data, err =>
+    console.error(err.stack)
+  );
   return data;
 };
 

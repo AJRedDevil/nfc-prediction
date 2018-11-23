@@ -24,12 +24,12 @@ const gameweekExist = sheetName =>
 const getJsonData = sheetName => XLSX.utils.sheet_to_json(getSheet(sheetName));
 const getGameWeekPrediction = gameweek => {
   const sheetName = `GW${gameweek}`;
-  const response = read(sheetName);
+  const response = read(`predictions/${sheetName}`);
   if (response.success) {
     return response.data;
   } else if (gameweekExist(sheetName)) {
     const data = getJsonData(sheetName);
-    write(sheetName, data, err => console.error(err.stack));
+    write(`predictions/${sheetName}`, data, err => console.error(err.stack));
     return data;
   } else {
     throw new Error('Incorrect Params');

@@ -21,7 +21,7 @@ router.get('/', (req, res) =>
 
 router.get('/:gameweek', (req, res) => {
   const gameweek = req.params.gameweek;
-  const response = read(`fixture${gameweek}`);
+  const response = read(`fixtures/fixture${gameweek}`);
   if (response.success) {
     return res.json(response);
   } else {
