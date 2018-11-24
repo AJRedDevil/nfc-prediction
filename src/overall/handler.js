@@ -1,6 +1,6 @@
 import {read, write, readDir} from '../utils';
 
-const overallFilePath = 'overall';
+const overallFilePath = 'overall/table';
 const writeOverallHandler = data =>
   write(overallFilePath, data, err => {
     if (err) throw new Error(err.message);

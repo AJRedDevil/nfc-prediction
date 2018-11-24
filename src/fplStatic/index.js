@@ -2,7 +2,7 @@ import express from 'express';
 import axios from 'axios';
 
 import config from '../../config';
-import {teamHandler} from './handler';
+import {teamHandler, eventHandler} from './handler';
 import {read} from '../utils';
 
 const router = express.Router();
@@ -42,5 +42,24 @@ router.get('/teams', async (req, res) => {
       });
   }
 });
+
+router.get('/finishedgameweeks', (req, res) =>
+  axios(config.static)
+    .then(response => response.data)
+    .then(eventHandler)
+    .then(events =>
+      res.json({
+        success: true,
+        data: events,
+      })
+    )
+    .catch(e => {
+      console.error(e.message);
+      res.json({
+        success: false,
+        message: e.message,
+      });
+    })
+);
 
 module.exports = router;

@@ -31,8 +31,19 @@ const readDir = subdir => {
   return files;
 };
 
+const range = (start, stop, step = 1) => {
+  let a = [start],
+    b = start;
+  while (b < stop) {
+    b += step;
+    a.push(b);
+  }
+  return a;
+};
+
 module.exports = {
   write,
   read,
   readDir,
+  range,
 };

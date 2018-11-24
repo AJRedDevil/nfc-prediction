@@ -29,7 +29,7 @@ router.get('/table', async (req, res) => {
 });
 
 router.post('/table', async (req, res) => {
-  const data = req.body;
+  const {data} = req.body;
   try {
     await writeOverallHandler(data);
     return res.json({
