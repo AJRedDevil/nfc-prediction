@@ -1,11 +1,15 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 
 import fplStatic from './fplStatic';
 import fixtures from './fixtures';
 import prediction from './prediction';
+import predictionScore from './predictionScore';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
 
 // Logger
 const log = str => console.log(JSON.stringify(str));
@@ -20,6 +24,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 app.use('/fplstatic', fplStatic);
 app.use('/fixtures', fixtures);
 app.use('/prediction', prediction);
+app.use('/predictionscore', predictionScore);
 
 // Error Handler
 // eslint-disable-next-line no-unused-vars
