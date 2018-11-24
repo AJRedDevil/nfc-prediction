@@ -16,7 +16,7 @@ const upload = multer({
   storage: storage,
 });
 
-const filePath = path.join(__dirname, '../../data/prediction.xlsx');
+const filePath = path.join(__dirname, '../../uploads/prediction.xlsx');
 const getWorkbook = () => XLSX.readFile(filePath);
 const getSheet = sheetName => getWorkbook().Sheets[sheetName];
 const gameweekExist = sheetName =>
