@@ -1,5 +1,0 @@
-# Downloads
-
-- Teams
-- Fixtures
-- Prediction

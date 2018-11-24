@@ -85,5 +85,4 @@ dist
 data
 uploads
 tests/api
-downloads/*
-!downloads/README.md
+downloads
