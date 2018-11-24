@@ -25,7 +25,14 @@ const read = filename => {
   }
 };
 
+const readDir = subdir => {
+  const directory = `${DIRECTORY}/${subdir}`;
+  const files = fs.readdirSync(directory, 'utf-8');
+  return files;
+};
+
 module.exports = {
   write,
   read,
+  readDir,
 };
